@@ -1,0 +1,64 @@
+esphome:
+  name: tempaz3
+  platform: ESP8266
+  board: nodemcuv2
+
+wifi:
+  ssid: !secret wifi-ssid
+  password: !secret wifi-password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Tempaz3 Fallback Hotspot"
+    password: "oJH6Kg8zhGtG"
+
+captive_portal:
+
+web_server:
+  port: 80
+  
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret api-password
+  
+ota:
+  password: !secret ota-password
+
+# Sync time with Home Assistant
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+    
+# text sensor with general information
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: esphome_tempaz3_ip
+    ssid:
+      name: esphome_tempaz3_ssid
+    bssid:
+      name: esphome_tempaz3_bssid
+      
+# sensors      
+sensor:
+  - platform: dht
+    pin: D2
+    model: DHT22
+    temperature:
+      name: "DHT22 Temperature"
+    humidity:
+      name: "DHT22 Humidity"
+    update_interval: 20s
+    
+  # WiFi Signal sensor
+  - platform: wifi_signal
+    name: esphome_tempaz3_wifi_signal
+    update_interval: 60s
+    
+switch:
+  # Switch to restart the plug
+  - platform: restart
+    name: esphome_tempaz3_restart

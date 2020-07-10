@@ -1,0 +1,15 @@
+################# iframe #################
+id: solar
+title: Solar
+icon: mdi:solar-power
+path: solar
+cards:
+
+# https://www.home-assistant.io/lovelace/iframe/
+  - type: iframe
+    url: http://192.168.178.23/page.yield.month.html
+    aspect_ratio: 100%
+    
+  - type: iframe
+    url: http://192.168.178.23/page.yield.day.html
+    aspect_ratio: 100%

@@ -1,0 +1,24 @@
+- id: '1578410228109'
+  name: Test1
+  entities:
+    light.wohnzimmer_jurgen:
+      brightness: 62
+      effect: colorloop
+      effect_list:
+      - colorloop
+      - random
+      friendly_name: Wohnzimmer Jürgen
+      hs_color:
+      - 278.955
+      - 52.549
+      max_mireds: 500
+      min_mireds: 153
+      rgb_color:
+      - 000
+      - 999
+      - 000
+      state: 'on'
+      supported_features: 63
+      xy_color:
+      - 0.309
+      - 0.18

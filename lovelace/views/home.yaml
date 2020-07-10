@@ -1,0 +1,137 @@
+################################## Home ##################################
+#https://www.home-assistant.io/lovelace/views/
+id: home
+title: Home
+path: home
+icon: mdi:home-assistant
+#theme: dark-mode
+badges:
+  - sensor.time
+ # - sun.sun
+  - sensor.iphone8plus_battery_level_2
+  - sensor.ipad_jurgi_battery_level
+  - sensor.hem_velten_diesel
+  - sensor.hem_velten_e10
+ # - sensor.hem_velten_e5
+  - sensor.cpu_temperature
+  - sensor.iphone8plus_steps
+  #- binary_sensor.water_sensor
+
+cards:
+  - type: vertical-stack
+    cards:
+# https://github.com/bramkragten/weather-card
+    - type: custom:weather-card
+      entity: weather.dark_sky
+      icons: "/local/weather-card/icons/"
+      current: true
+      name: 
+      forecast: true
+      details: true
+
+    - type: custom:mini-graph-card
+      entities:
+        - sensor.pressure_4
+      name: Aqara Pressure (1 week)
+      hour24: true
+      hours_to_show: 168
+      show:
+        labels: true
+        graph: line
+        average: true
+        extrema: true
+        color: #1e90ff
+      line_width: 3
+
+#########  vertical-stack beginn #########################
+  - type: vertical-stack
+    cards:
+##### 2 Temp-Sensoren in einem Diagramm ##########
+    - type: custom:mini-graph-card
+      entities:
+        - entity: sensor.tx29_temperature
+          name: TX29
+          color: orange
+        - entity: sensor.temperature_11
+          name: Out Front
+          color: blue
+          y_axis: secondary
+          show_state: true
+      hour24: true
+      hours_to_show: 168
+    #  update_interval: 600
+      name: Outside (1 week)
+      group_by: interval
+      show:
+        graph: line
+        line_width: 3
+        average: true
+        extrema: true
+        labels: true
+        labels_secondary: true
+    
+##### 2 Humidity-Sensoren in einem Diagramm ##########
+    - type: custom:mini-graph-card
+      entities:
+      - entity: sensor.tx29_humidity
+        name: TX29
+      - entity: sensor.humidity_12
+        name: Out Front
+        y_axis: secondary
+        show_state: true
+   #  - entity: sensor.pressure_13
+   #     show_graph: false
+   #     show_state: true
+   #     show_indicator: true
+      hour24: true
+      hours_to_show: 168
+      name: Outside (1 week)
+      group_by: interval
+      show:
+        graph: line
+        line_width: 3
+        average: true
+        extrema: true
+        labels: true
+        labels_secondary: true
+    
+
+#https://www.home-assistant.io/lovelace/alarm-panel/
+ # - type: alarm-panel
+ #   name: HmIP House Alarm
+ #   entity: alarm_control_panel.hmip_alarm_control_panel
+    
+#https://www.home-assistant.io/lovelace/entity-filter/
+  - type: entity-filter
+    entities:
+      - light.couch
+      - light.wohnzimmer_jurgen
+      - light.wohnzimmer_ina
+      - light.wohnzimmer_esstisch
+      - light.osram_color
+      - light.drucker
+      - light.flur_deckenlampe
+    state_filter:
+      - "on"
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Welche Lampen sind an?
+
+  - type: entity-filter
+    entities:
+      - binary_sensor.turkontakt_mit_magnet_vorn
+      - binary_sensor.shutter_contact
+      - binary_sensor.turkontakt_terrasse
+      - binary_sensor.fensterkontakt_sz_rechts
+      - binary_sensor.fensterkontakt_az
+      - binary_sensor.fensterkontakt_bad
+      - binary_sensor.shutter_contact_magnetic
+      - binary_sensor.openclose_17
+    state_filter:
+      - "on"
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Fenster/Türen offen?
+##############################

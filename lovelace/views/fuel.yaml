@@ -1,0 +1,49 @@
+id: fuel
+title: Treibstoffpreise
+icon: mdi:gas-station
+path: fuel
+cards:
+   # Tankerkönig 
+  - type: entities
+    title: Spritpreise
+    show_header_toggle: false
+  #  icon: gas-station
+    entities:
+      - entity: sensor.hem_velten_diesel
+      - entity: sensor.star_velten_diesel
+      - entity: sensor.star_vehlefanz_diesel
+      - entity: sensor.hem_velten_e10
+      - entity: sensor.star_velten_e10
+      - entity: sensor.star_vehlefanz_e10
+ 
+  - type: entity-filter
+    entities:
+      - entity: binary_sensor.hem_velten_state
+      - entity: binary_sensor.star_velten_state
+      - entity: binary_sensor.star_vehlefanz_state
+    state_filter:
+      - "on"    
+    card:
+      type: entities
+      show_header_toggle: false
+      title: Tankstellen offen?
+        
+  #https://smart-home-assistant.de/wetterdaten-lovelace-kacheln/        
+  - type: history-graph
+    title: Dieselpreise
+    hours_to_show: 48
+    entities:
+      - sensor.hem_velten_diesel
+     # - sensor.star_velten_diesel
+     # - sensor.star_vehlefanz_diesel
+      
+  - type: history-graph
+    title: Benzinpreise
+    hours_to_show: 48
+    entities:
+      - sensor.hem_velten_e10
+    #  - sensor.star_velten_e10
+     # - sensor.star_vehlefanz_e10
+     
+
+ 

@@ -1,0 +1,24 @@
+id: battery
+title: battery
+icon: mdi:battery-50
+path: battery
+cards:
+  - type: 'custom:battery-state-card'
+    title: Battery-List
+    sort_by_level: "asc"
+    color_gradient:
+      - "#ff0000" # red
+      - "#ffff00" # yellow
+      - "#0000ff" # blue
+    entities:
+      - sensor.multisensorvorn_battery_level
+      - sensor.multisensordg_battery_level
+      - sensor.multisensorwz_battery_level
+      - sensor.multisensorbad_battery_level
+      - sensor.multisensorkeller_battery_level
+      - entity: sensor.openclose_17_battery_level
+        name: Fenster SZ links
+      - entity: sensor.iphone8plus_battery_level_2
+        name: Iphone8Plus
+      - entity: sensor.ipad_jurgi_battery_level
+        name: iPad

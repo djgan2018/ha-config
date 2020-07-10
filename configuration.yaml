@@ -1,0 +1,209 @@
+# Main Configuration
+
+# Main Settings
+# https://www.home-assistant.io/docs/configuration/basic/
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+discovery:
+mobile_app:
+# Example configuration.yaml entry
+logbook:
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+      - group
+      - script
+      - media_player
+      - input_number
+      - zone
+      - scene
+      
+#System Health-Komponente wird geladen.
+system_health:
+# Enables for frontend
+frontend:
+  #themes: !include themes.yaml
+  themes: !include_dir_merge_named themes
+  javascript_version: latest
+  
+scene: !include scenes.yaml
+#javascript_version: latest
+
+#https://www.home-assistant.io/lovelace/yaml-mode/
+lovelace:
+  mode: yaml
+  resources:
+    - url: /local/mini-media-player-bundle.js?v=1.4.2
+      type: module
+    - url: /local/weather-card/weather-card.js
+      type: module
+################ with HACS ###################################
+# https://github.com/kalkih/mini-graph-card
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+# https://github.com/custom-cards/bar-card
+    - url: /hacsfiles/bar-card/bar-card.js
+      type: module
+# hacs battery-state-card
+    - url: /hacsfiles/battery-state-card/battery-state-card.js
+      type: module
+# hacs https://github.com/thomasloven/lovelace-slider-entity-row
+    - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+      type: module
+# hacs flex-table-card
+    - url: /hacsfiles/flex-table-card/flex-table-card.js
+      type: module
+# hacs card-mod
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
+
+
+#https://home-assistant.io/components/history/
+history:
+  exclude:
+    domains:
+      - automation
+      - updater
+
+#https://www.home-assistant.io/integrations/recorder#service-purge
+recorder:
+  #purge_interval: 1
+  purge_keep_days: 10
+  db_url: !secret ha_recorder_dburl
+  exclude:
+    domains:
+      - automation
+      - weblink
+      - updater
+      - group
+      - script
+      - media_player
+      - input_number
+      - zone
+      - scene
+      - binary_sensor
+      - person
+      - persistent_notification
+      - climate
+      - camera
+    entities:
+      - sun.sun # Don't record sun data
+      - sensor.last_boot # Comes from 'systemmonitor' sensor platform
+      - sensor.date
+      - weather.dark_sky
+      - weather.myhome
+      - weather.weather_velten_deutschland
+      - light.az_2
+      - sensor.ganzer_s_echo_dot_next_timer
+      - sensor.ganzer_s_fire_tv_stick_next_timer
+      - sensor.ganzer_s_fire_tv_stick_next_alarm
+      - sensor.ganzer_s_fire_tv_stick_next_reminder
+      - sensor.ganzer_s_fire_tv_next_alarm
+      - sensor.ganzer_s_fire_tv_next_reminder
+      - camera.octoprint
+      - sensor.internet_time
+      - light.custom_group_for_lights
+      - sensor.time_utc
+      - sensor.internet_time
+      - sensor.date_time_iso
+      - sensor.date_time
+      - sensor.time
+      - sensor.time_date
+      - sensor.synology_memory_cached
+      - sensor.synology_memory_available_real
+      - sensor.synology_cpu_load_15_min
+      - sensor.synology_cpu_load_user
+      - sensor.synology_cpu_load_other
+      - sensor.synology_cpu_load_total
+      - sensor.synology_cpu_load_1_min
+      - sensor.synology_cpu_load_5_min
+    event_types:
+      - call_service # Don't record service calls
+
+#https://home-assistant.io/components/sun/
+sun:
+
+# Text to speech
+#tts:
+#  - platform: google_translate
+
+#group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+sensor: !include sensoren.yaml
+
+homeassistant:
+  latitude: !secret basic_latitude
+  longitude: !secret basic_longitude
+  elevation: 42
+  unit_system: metric
+  time_zone: Europe/Berlin
+  name: My Home
+  external_url: http://192.168.178.42:8123
+  internal_url: http://192.168.178.42:8123
+
+
+# Example configuration.yaml entry for DarkSky
+weather:
+  - platform: darksky
+    api_key: !secret dark-sky
+    mode: daily
+  - platform: openweathermap
+    api_key: !secret owm-key
+
+# Example configuration.yaml entry for IOS
+ios:
+homekit:
+  filter:
+    include_domains:
+      - sensor
+
+      
+# https://github.com/custom-components/alexa_media_player/wiki/Notification-Component
+notify:
+  - platform: alexa_media
+    name: alexa_media
+# für Telegram
+  - name: HA_Message
+    platform: telegram
+    chat_id: !secret telegram_djgan_ID
+
+# hier standen mal alle Sensoren
+# siehe auch sensoren.yaml
+# djgan,10.02.2020
+
+############ Tankerkönig als custom-components
+# https://github.com/panbachi/homeassistant-tankerkoenig
+tankerkoenig:
+  api_key: !secret tanker-key
+  monitored_conditions:
+    - "diesel"
+    - "e10"
+    - "state"
+  stations:
+    - id: 'e1a15081-253f-9107-e040-0b0a3dfe563c'
+      name: 'HEM Velten'
+      street: 'Ahornstr. 1'
+      brand: HEM
+    - id: '005056ba-7cb6-1ed2-bceb-6801c0fc0d1f'
+      name: 'Star Velten'
+      street: 'Berliner Str.'
+      brand: Star
+    - id: '005056ba-7cb6-1ed2-bceb-5d427470cd1b'
+      name: 'Star Vehlefanz'
+      street: 'Lindenallee'
+      brand: Star
+
+
+# Telegram
+# https://www.youtube.com/watch?v=_XI2HxTQgUQ
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_API
+    allowed_chat_ids:
+      - !secret telegram_djgan_ID
+
+

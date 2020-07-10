@@ -1,0 +1,59 @@
+################################## Temperaturen ##################################
+#https://www.home-assistant.io/lovelace/thermostat/
+#https://www.home-assistant.io/lovelace/history-graph/ 
+#https://www.home-assistant.io/lovelace/gauge/ >>> z.Zt. nicht verwendet  <<<<
+id: heizung
+icon: mdi:radiator
+title: Heizung
+path: heizung
+badges:
+  - sun.sun
+  - sensor.heizkorperthermostat_az_heating
+  - sensor.heizkorperthermostat_bad_heating
+  - sensor.heizkorperthermostat_sz_rechts_heating
+  - sensor.heizkorperthermostat_gastetoilette_heating
+
+cards:
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> AZ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  - type: thermostat
+    entity: climate.arbeitszimmer
+#https://www.home-assistant.io/lovelace/history-graph/     
+  - type: history-graph
+    title: Temperaturverlauf AZ
+    entities: 
+      - sensor.heizkorperthermostat_az_temperature
+      - binary_sensor.fensterkontakt_az
+      - sensor.heizkorperthermostat_az_heating
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Bad <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  - type: thermostat
+    entity: climate.bad
+#https://www.home-assistant.io/lovelace/history-graph/    
+  - type: history-graph
+    title: Temperaturverlauf Bad
+    entities:
+      - sensor.heizkorperthermostat_bad_temperature
+      - binary_sensor.fensterkontakt_bad
+      - sensor.heizkorperthermostat_bad_heating
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> SZ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  - type: thermostat
+    entity: climate.schlafzimmer
+#https://www.home-assistant.io/lovelace/history-graph/    
+  - type: history-graph
+    title: Temperaturverlauf SZ
+    entities:
+      - sensor.heizkorperthermostat_sz_rechts_temperature
+      - binary_sensor.fensterkontakt_sz_rechts
+      - sensor.heizkorperthermostat_sz_rechts_heating
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Gästetoilette <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+  - type: thermostat
+    entity: climate.gastetoilette
+#https://www.home-assistant.io/lovelace/history-graph/    
+  - type: history-graph
+    title: Gästetoilette
+    entities:
+      - sensor.heizkorperthermostat_gastetoilette_temperature
+      - binary_sensor.shutter_contact
+      - sensor.heizkorperthermostat_gastetoilette_heating

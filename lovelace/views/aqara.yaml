@@ -1,0 +1,240 @@
+# https://github.com/kalkih/mini-graph-card 
+id: aqara
+title: Aqara
+icon: mdi:home-automation
+path: aqara
+#type: vertical-stack
+cards:
+  - type: vertical-stack
+    cards:
+####### Mini-Cards-horizontal Outer ###############      
+    - type: horizontal-stack
+      cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.temperature_11
+        name: Out Front (5 days)
+        hour24: true
+        hours_to_show: 120
+        line_color: '#e74c3c'
+        line_width: 4
+        font_size: 75
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.humidity_12
+        name: Out Front (5 days)
+        hour24: true
+        hours_to_show: 120
+        line_color: green
+        line_width: 4
+        font_size: 75
+
+####### Mini-Cards-horizontal Outer2 ###############      
+    - type: horizontal-stack
+      cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.tx29_temperature
+        name: TX29 Bikeport (5 days)
+        hour24: true
+        hours_to_show: 120
+      #  update_interval: 1200 #alle 2 min
+        line_color: '#e74c3c'
+        line_width: 4
+        font_size: 75
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.tx29_humidity
+        name: TX29 Bikeport (5 days)
+        hour24: true
+        hours_to_show: 120
+        line_color: green
+        line_width: 4
+        font_size: 75
+
+    - type: horizontal-stack
+      cards:
+######## Mini-Cards-horizontal WZ ###############
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.temperature_14
+          name: WZ (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: '#e74c3c'
+          line_width: 4
+          font_size: 75
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.humidity_15
+          name: WZ (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: green
+          line_width: 4
+          font_size: 75
+
+######## Mini-Cards-horizontal AZ ##############        
+    - type: horizontal-stack
+      cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.temperature_8
+        name: AZ (5 days)
+        hour24: true
+        hours_to_show: 120
+        line_color: '#e74c3c'
+        line_width: 4
+        font_size: 75
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.humidity_9
+        name: AZ (5 days)
+        hour24: true
+        hours_to_show: 120
+        line_color: green
+        line_width: 4
+        font_size: 75
+        
+
+        
+    - type: horizontal-stack
+      cards:
+  ######## Mini-Cards-horizontal Bad ###############
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.temperature_2
+          name: Bad (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: '#e74c3c'
+          line_width: 4
+          font_size: 75
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.humidity_3
+          name: Bad (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: green
+          line_width: 4
+          font_size: 75
+         # smoothing: false
+      
+    - type: horizontal-stack
+      cards:
+######## Mini-Cards-horizontal DG ###############
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.temperature_5
+          name: DG (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: '#e74c3c'
+          line_width: 4
+          font_size: 75
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.humidity_6
+          name: DG (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: green
+          line_width: 4
+          font_size: 75
+          
+    - type: horizontal-stack
+      cards:
+######## Mini-Cards-horizontal esphome Keller ###############
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.keller_temperature
+          name: Keller esphome (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: '#e74c3c'
+          line_width: 4
+          font_size: 75
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.keller_humidity
+          name: Keller esphome (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: green
+          line_width: 4
+          font_size: 75     
+
+######################################     
+    ######## mehrere Entitys (WZ), aber nur eine Kurve #########
+    - type: custom:mini-graph-card
+      entities:
+      - entity: sensor.temperature_14
+        show_state: true        
+        show_indicator: true
+      - entity: sensor.humidity_15
+        show_graph: false
+        show_state: true
+        show_indicator: true
+      - entity: sensor.pressure_16
+        show_graph: false
+        show_state: true
+        show_indicator: true
+      name: WZ (1 week)
+      hour24: true
+      points_per_hour: 1
+      show:
+        extrema: true
+        average: true
+      hours_to_show: 168
+      line_color: '#FF0040'
+      line_width: 2
+      font_size: 75
+      
+    ######## mehrere Entitys (DG), aber nur eine Kurve #########
+    - type: custom:mini-graph-card
+      entities:
+      - entity: sensor.temperature_5
+        show_state: true        
+        show_indicator: true
+      - entity: sensor.humidity_6
+        show_graph: false
+        show_state: true
+        show_indicator: true
+      - entity: sensor.pressure_7
+        show_graph: false
+        show_state: true
+        show_indicator: true
+      name: DG (1 week)
+      hour24: true
+      points_per_hour: 1
+      show:
+        extrema: true
+        average: true
+      hours_to_show: 168
+      line_color: '#FF0040'
+      line_width: 2
+      font_size: 75  
+
+    - type: custom:mini-graph-card
+      entities:
+      - entity: sensor.daily_hem_diesel_min
+        show_state: true        
+        show_indicator: true
+      - entity: sensor.daily_hem_e10_min
+        show_graph: false
+        show_state: true
+        show_indicator: true
+      name: Diesel / E10 min pro Tag
+      hour24: true
+      group_by: date
+      smoothing: false
+      show:
+        graph: line
+        smoothing: false
+        extrema: true     
+      hours_to_show: 168
+      font_size: 75
+######## Ende vertical und 5x horizontal stack #########
+
+

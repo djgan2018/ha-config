@@ -1,0 +1,6 @@
+autofullbackup:
+  alias: AutoBackupFull
+  sequence:
+  - data_template:
+      name: AutoBackupFull {{ states('sensor.date_time') }}
+    service: hassio.snapshot_full

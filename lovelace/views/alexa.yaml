@@ -1,0 +1,49 @@
+id: alexa
+title: alexa
+icon: mdi:music
+path: alexa
+cards:
+  - type: custom:mini-media-player
+    entity: media_player.ganzer_s_echo_dot
+    icon: mdi:spotify
+    artwork: full-cover-fit
+    source: true
+    sound_mode: full
+    scroll_info: true
+    power_state: true
+    volume: true
+    
+  - type: media-control
+    entity: media_player.ganzer_s_echo_dot
+    power_state: true    
+    artwork: full-cover-fit
+    source: true
+    
+  - type: custom:mini-media-player
+    entity: media_player.ganzer_s_echo_plus
+    icon: mdi:spotify
+    artwork: full-cover
+    source: true
+    source_mode: full
+    power_state: true
+    volume: true
+  #  group: true
+
+  - type: media-control
+    entity: media_player.ganzer_s_fire_tv
+
+  - type: 'custom:mini-media-player'
+    artwork: full-cover
+    entity: media_player.ganzer_s_echo_dot
+    icon: 'mdi:amazon'
+    tts:
+      platform: alexa
+      entity_id: media_player.ganzer_s_echo_dot
+      
+  - type: 'custom:mini-media-player'
+    artwork: full-cover
+    entity: media_player.ganzer_s_echo_plus
+    icon: 'mdi:amazon'
+    tts: 
+      platform: alexa
+      entity_id: media_player.ganzer_s_echo_plus

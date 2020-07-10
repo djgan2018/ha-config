@@ -1,0 +1,90 @@
+id: test2
+title: Test2
+icon: mdi:file-question-outline
+path: test2
+cards:
+  - type: entities
+    entities:
+      - binary_sensor.heizkorperthermostat_az_battery
+      - sensor.heizkorperthermostat_az_heating
+      - sensor.heizkorperthermostat_az_temperature
+
+# Sensoren aus template    
+  - type: entities
+    title: Template-Sensoren
+    show_header_toggle: false
+    entities: 
+      - sensor.solar_angle
+    #  - sensor.sunrise
+      - sensor.nonworker
+# autobackup
+  - type: entities
+    title: Autobackup steuern
+    show_header_toggle: false
+    entities:
+      - script.autofullbackup
+      - automation.autofullbackup
+     # - automation.mytimer
+      
+  - type: entities
+    title: Alexa nicht stören steuern
+    show_header_toggle: false
+    entities:
+        - switch.ganzer_s_echo_dot_do_not_disturb_switch
+        - switch.ganzer_s_echo_plus_do_not_disturb_switch
+    
+  - type: entities
+    title: iPhone8Plus
+    show_header_toggle: false
+    entities:
+    #  - sensor.ipad_jurgi_sim_1
+      - sensor.iphone8plus_geocoded_location
+      - sensor.iphone8plus_activity
+  - type: entities
+    style: |
+      ha-card {
+          font-variant: small-caps;
+      }
+      .card-header {
+          font-size: 18px;
+      }
+    title: HP Photosmart C410
+    show_header_toggle: false
+    entities:
+      - entity: sensor.hp_photosmart_prem_c410_series
+        name: C410
+      - entity: sensor.hp_photosmart_prem_c410_series_light_black_ink
+        name: Photo Black
+      - entity: sensor.hp_photosmart_prem_c410_series_black_ink
+        name: Black
+      - entity: sensor.hp_photosmart_prem_c410_series_cyan_ink
+        name: Cyan
+      - entity: sensor.hp_photosmart_prem_c410_series_magenta_ink
+        name: Magenta
+      - entity: sensor.hp_photosmart_prem_c410_series_yellow_ink
+        name: Yellow
+      
+  - type: glance
+    title: Glance Card Heizkörper
+    entities:
+      - entity: sensor.heizkorperthermostat_az_temperature
+      - entity: sensor.heizkorperthermostat_bad_temperature
+      - entity: sensor.heizkorperthermostat_sz_rechts_temperature
+      - entity: sensor.heizkorperthermostat_gastetoilette_temperature
+      
+  - type: glance
+    title: Glance Card Aqara Battery
+    entities:
+      - entity: sensor.multisensorvorn_battery_level
+        name: Vorn
+      - entity: sensor.multisensorkeller_battery_level
+        name: Keller
+      - entity: sensor.multisensorwz_battery_level
+        name: WZ
+      - entity: sensor.multisensorbad_battery_level
+        name: Bad
+      - entity: sensor.multisensordg_battery_level
+        name: DG
+
+      
+          

@@ -1,0 +1,43 @@
+id: wetter
+title: Wetter
+icon: mdi:weather-partly-cloudy
+path: wetter
+cards:
+#
+  - type: picture
+    image: >-
+      https://www.dwd.de/DE/wetter/wetterundklima_vorort/berlin-brandenburg/_functions/bildgalerie/wetter_aktuell.jpg?view=nasImage&nn=561856
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+
+  - type: entities
+    title: Sonnenstand
+    show_header_toggle: false
+    entities:
+      - sun.sun
+    #  - sensor.daylight
+      - sensor.solar_angle
+
+    #https://www.home-assistant.io/lovelace/weather-forecast/
+  - type: weather-forecast
+    #title: QWM
+    show_header_toggle: false
+    entity: weather.dark_sky
+    
+  - type: weather-forecast
+    #title: QWM
+    show_header_toggle: false
+    entity: weather.openweathermap
+    
+        
+  #https://smart-home-assistant.de/wetterdaten-lovelace-kacheln/
+  - type: history-graph
+    title: OWM Wetter (5 days)
+    hours_to_show: 120
+    entities:
+      - sensor.owm_temperature
+      - sensor.owm_humidity
+      - sensor.owm_pressure
+ 

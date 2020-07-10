@@ -1,0 +1,70 @@
+########## Lichter ##########
+id: lichter
+title: Lichter
+path: lichter
+icon: mdi:lightbulb
+cards:
+         # Entities card will take a list of entities and show their state.
+  - type: entities
+    style: |
+      ha-card {
+          font-variant: small-caps;
+      }
+    title: Licht
+    entities:
+    - type: custom:slider-entity-row
+      entity: light.couch
+      toggle: true
+      hide_when_off: true
+    - type: custom:slider-entity-row
+      entity: light.wohnzimmer_jurgen
+      name: WZ Jürgi
+      toggle: true
+      hide_when_off: true
+#      attribute: color=blue
+    - type: custom:slider-entity-row
+      entity: light.wohnzimmer_ina
+      name: WZ Ina
+      toggle: true
+      hide_when_off: true
+    - type: custom:slider-entity-row
+      entity: light.wohnzimmer_esstisch
+      name: Esstisch
+      toggle: true
+      hide_when_off: true
+    - type: section
+    - type: custom:slider-entity-row
+      entity: light.osram_color
+      name: AZ
+      toggle: true
+      hide_when_off: true
+    - type: custom:slider-entity-row
+      name: Flur
+      toggle: true
+      entity: light.flur_deckenlampe
+    - type: section
+    - type: custom:slider-entity-row
+      entity: light.on_off_plug_drucker
+      toggle: true
+    
+#      - scene.test1
+
+    ###### __2. horizontal-stack____################
+  - type: horizontal-stack
+    cards:
+      - type: light
+        style: |
+          ha-card {
+              font-variant: small-caps;
+              background: {% if is_state('light.osram_color', 'on') %} lightyellow {% endif %};
+            }
+        entity: light.osram_color
+        icon: mdi:ceiling-light
+      - type: light
+        style: |
+          ha-card {
+              font-variant: small-caps;
+              background: {% if is_state('light.wohnzimmer_jurgen', 'on') %} lightyellow {% endif %};
+            }
+        entity: light.wohnzimmer_jurgen
+        icon: mdi:lightbulb-on

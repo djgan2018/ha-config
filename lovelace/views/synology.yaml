@@ -1,0 +1,24 @@
+volume_1id: synology
+title: Synology
+icon: mdi:nas
+path: synology
+cards:
+  - type: entities
+    title: Synology NAS DSM216+II
+    show_header_toggle: false
+    entities:
+      - sensor.synology_temperature_sda
+      - sensor.synology_temperature_sdb
+      - sensor.synology_average_disk_temp_volume_1
+      - sensor.synology_cpu_load_total
+      - sensor.synology_cpu_load_system
+      - sensor.synology_cpu_load_user
+      - sensor.synology_cpu_load_other
+      - sensor.synology_cpu_load_15_min
+      - sensor.synology_memory_size
+      - sensor.synology_memory_usage_real
+      - sensor.synology_total_size_volume_1
+      - sensor.synology_used_space_volume_1
+      - sensor.synology_volume_used_volume_1
+      - sensor.synology_network_up
+      - sensor.synology_network_down

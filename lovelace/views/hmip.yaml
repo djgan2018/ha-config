@@ -1,0 +1,40 @@
+id: hmip
+title: HmIP
+path: hmip
+cards:
+  - type: entities
+    title: Fenster & Türen
+    show_header_toggle: false
+    entities:
+      - binary_sensor.turkontakt_mit_magnet_vorn
+      - binary_sensor.shutter_contact
+      - binary_sensor.turkontakt_terrasse
+      - binary_sensor.fensterkontakt_sz_rechts
+      - binary_sensor.fensterkontakt_az
+      - binary_sensor.fensterkontakt_bad
+      - binary_sensor.shutter_contact_magnetic
+      - binary_sensor.openclose_17
+      
+  - type: entities
+    title: Batterien
+    show_header_toggle: false
+    entities:
+      - binary_sensor.turkontakt_mit_magnet_vorn_battery
+      - binary_sensor.shutter_contact_battery
+      - binary_sensor.turkontakt_terrasse_battery
+      - binary_sensor.fensterkontakt_sz_rechts_battery
+      - binary_sensor.fensterkontakt_az_battery
+      - binary_sensor.fensterkontakt_bad_battery
+      - binary_sensor.shutter_contact_magnetic_battery
+      - sensor.openclose_17_battery_level
+      - sensor.tx29_lacrosse_battery
+      
+  - type: entities
+    title: Steckdose
+    show_header_toggle: false
+    entities:
+      - sensor.plugable_switch_measuring_power
+      - switch.plugable_switch_measuring
+      
+      
+

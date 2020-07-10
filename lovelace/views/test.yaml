@@ -1,0 +1,214 @@
+id: test
+title: Test
+icon: mdi:file-question-outline
+path: test
+cards:
+# CPU
+  - type: entities
+    title: CPU (24h)
+    show_header_toggle: false
+    entities:
+      - sensor.cpu_temperature
+    footer:
+      type: graph
+      entity: sensor.cpu_temperature
+      hours_to_show: 24
+      detail: 2
+        
+  - type: horizontal-stack
+    cards:
+    - type: gauge
+      entity: sensor.cpu_temperature
+      min: 20
+      max: 50
+      severity:
+        green: 36
+        yellow: 38
+        red: 40
+    - type: gauge
+      entity: sensor.plugable_switch_measuring_power
+      name: Trockner
+      max: 550
+      severity:
+        green: 100
+        yellow: 350
+        red: 420
+
+   ########### raspi line-Chart pro Tag ############
+  - type: custom:mini-graph-card
+  #  name: HmIP Schaltsteckdose
+    entities:
+      - entity: sensor.plugable_switch_measuring_power
+        name: HmIP Schaltsteckdose
+        color: blue
+    name: HmIP Schaltsteckdose (2 days)
+    upper_bound: 500
+    hours_to_show: 48
+    hour24: true
+    smoothing: false
+    #update_interval: 60
+    animate: true
+    group_by: interval
+  #  line_width: 3
+    show:
+      average: true
+      extrema: true
+      last: true
+      labels: true
+      graph: bar
+    
+  ########### raspi line-Chart pro Stunde ############
+  - type: custom:mini-graph-card
+    title: HmIP Schaltsteckdose
+    entities:
+      - entity: sensor.cpu_temperature
+        aggregate_func: max
+        name: max
+        hour24: true
+        color: #e74c3c
+      - entity: sensor.cpu_temperature
+      #  aggregate_func: avg
+        aggregate_func: delta
+        name: delta #avg
+        hour24: true
+        color: #e7413c
+      - entity: sensor.cpu_temperature
+        aggregate_func: min
+        name: min
+        hour24: true
+        color: #dd3333
+    name: CPU (5 days)
+    hours_to_show: 120
+    hour24: true
+    line_width: 3
+    show:
+      labels: true
+      graph: line
+    group_by: date
+
+##### CPU-Sensoren min,avg,max ##########
+  - type: custom:mini-graph-card
+    entities:
+      - entity: sensor.cpu_temperature
+        name: TX29
+  #    - entity: sensor.temperature_11
+ #       y_axis: secondary
+    #    show_state: true
+    hour24: true
+    hours_to_show: 48
+    update_interval: 1200 #alle 2 min
+    name: CPU (2 days)
+    group_by: interval
+    line_color: '#ff4400'
+    line_width: 3
+    show:
+      graph: line
+      average: true
+      extrema: true
+      last: true
+      labels: true
+    
+  - type: vertical-stack
+    cards:
+    - type: 'custom:bar-card'
+      entity: sensor.temperature_11
+      name: Temp vorn
+      icon: mdi:thermometer
+      target: 25
+      bar-card-border-radius: 2
+      min: 0
+      max: 45
+      positions:
+        minmax: inside
+      severity:
+        - color: Blue
+          from: 0
+          to: 18
+        - color: Orange
+          from: 19
+          to: 25.4
+        - color: Red
+          from: 25.5
+          to: 45
+ 
+    - type: 'custom:bar-card'
+      entities: 
+        - entity: sensor.tx29_temperature
+          name: Temp Bikeport
+      icon: mdi:thermometer
+      target: 25
+      min: 0
+      max: 45
+      positions:
+        minmax: inside
+      severity:
+        - color: Blue
+          from: 0
+          to: 18
+        - color: Orange
+          from: 19
+          to: 25.4
+        - color: Red
+          from: 25.5
+          to: 45
+
+    - type: 'custom:bar-card'
+      entities: 
+        - entity: sensor.dht22_temperature
+          name: Temp DHT22
+      icon: mdi:thermometer
+      target: 25
+      min: 0
+      max: 45
+      positions:
+        minmax: inside
+      severity:
+        - color: Blue
+          from: 0
+          to: 18
+        - color: Orange
+          from: 19
+          to: 25.4
+        - color: Red
+          from: 25.5
+          to: 45
+          
+  - type: 'custom:bar-card'
+    entities: 
+      - entity: sensor.multisensorvorn_battery_level
+        name: Battery Aqara vorn
+    icon: mdi:battery-50
+    target: 10
+    positions:
+      minmax: inside
+    severity:
+      - color: Red
+        from: 0
+        to: 15
+      - color: yellow
+        from: 16
+        to: 75
+      - color: green
+        from: 76
+        to: 100 
+        
+  - type: 'custom:bar-card'
+    entities: 
+      - entity: sensor.plugable_switch_measuring_power
+        name: Trockner
+    icon: mdi:power-plug
+    positions:
+      minmax: inside
+    severity:
+      - color: blue
+        from: 0
+        to: 150
+      - color: yellow
+        from: 151
+        to: 400
+      - color: red
+        from: 401
+        to: 500 
+  
+  
+    
