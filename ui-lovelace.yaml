@@ -7,13 +7,13 @@
 ####################################################
 
 title: My Awesome Home
-#resources: !include_dir_list lovelace/resources
 views:
   - !include lovelace/views/home.yaml
   - !include lovelace/views/lichter.yaml
   - !include lovelace/views/heizung.yaml
   - !include lovelace/views/wetter.yaml
   - !include lovelace/views/fuel.yaml
+  - !include lovelace/views/table.yaml
   - !include lovelace/views/battery.yaml
   - !include lovelace/views/solar.yaml
   - !include lovelace/views/test.yaml
@@ -23,11 +23,11 @@ views:
   - !include lovelace/views/links.yaml
   - !include lovelace/views/hmip.yaml
   - !include lovelace/views/synology.yaml
-  - !include lovelace/views/table.yaml
+
 
 ####################################################
 #                                                  #
-#                   RESOURCES                      #
+#                   RESSOURCES                     #
 # stehen jetzt (03/2020) in der configuration.yaml #
 ####################################################
 # https://github.com/kalkih/mini-media-player
