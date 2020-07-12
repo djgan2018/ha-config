@@ -49,8 +49,19 @@ sensor:
     model: DHT22
     temperature:
       name: "Keller Temperature"
+      filters:
+        - calibrate_linear:
+          # Map 0.0 (from sensor) to 0.0 (true value)
+          - 0.0 -> 0.0
+          - 18.9 -> 19.0
     humidity:
       name: "Keller Humidity"
+      accuracy_decimals: 1
+      filters:
+        - calibrate_linear:
+          # Map 0.0 (from sensor) to 0.0 (true value)
+          - 0.0 -> 0.0
+          - 56.5 -> 50.7
     update_interval: 20s
     
   # WiFi Signal sensor
