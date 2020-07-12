@@ -165,6 +165,28 @@ cards:
           line_width: 4
           font_size: 75     
 
+    - type: horizontal-stack
+      cards:
+######## Mini-Cards-horizontal esphome Keller2 ###############
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.keller2_temperature
+          name: Keller2 esphome (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: '#e74c3c'
+          line_width: 4
+          font_size: 75
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.keller2_humidity
+          name: Keller2 esphome (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: green
+          line_width: 4
+          font_size: 75 
+
 ######################################     
     ######## mehrere Entitys (WZ), aber nur eine Kurve #########
     - type: custom:mini-graph-card
