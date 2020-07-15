@@ -13,7 +13,7 @@ cards:
     title: Flex Table Temperatur
     clickable: true
     entities:
-      include: sensor.temperature_*
+      include: sensor.temperature_* 
     columns:
       - attr: friendly_name
         name: Ort
@@ -38,7 +38,37 @@ cards:
           const minr = Math.floor(minutes);
           hours + " h " + minr + " min"
         suffix: ' ago'
-        
+
+  - type: custom:flex-table-card
+    title: Flex Table Temperatur
+    clickable: true
+    entities:
+      include: sensor.keller*_temperature
+    columns:
+      - attr: friendly_name
+        name: Ort
+      - data: entity_id
+        name: Sensor
+      - data: state
+        name: Temperatur
+     #   icon: mdi:thermometer
+        suffix: ' °C'
+        align: center
+      - align: right
+        data: last_changed
+        name: Last Changed
+        icon: mdi:clock-outline
+        modify: |
+          const hourDiff = (Date.now() - Date.parse(x));
+          const secDiff = hourDiff / 1000;
+          const minDiff = hourDiff / 60 / 1000;
+          const hDiff = hourDiff / 3600 / 1000;
+          const hours = Math.floor(hDiff);
+          const minutes = minDiff - 60 * hours;
+          const minr = Math.floor(minutes);
+          hours + " h " + minr + " min"
+        suffix: ' ago'
+
   - type: custom:flex-table-card
     title: Flex Table Luftfeuchtigkeit   
     clickable: true
@@ -67,7 +97,36 @@ cards:
           const minr = Math.floor(minutes);
           hours + " h " + minr + " min"
         suffix: ' ago'
-        
+
+  - type: custom:flex-table-card
+    title: Flex Table Luftfeuchtigkeit   
+    clickable: true
+    entities:
+      include: sensor.keller*_humidity    
+    columns:    
+      - data: friendly_name
+        name: Ort
+      - data: entity_id
+        name: Sensor    
+      - data: state
+        name: Humidity
+        suffix: ' %'
+        align: center
+      - align: right
+        data: last_changed
+        name: Last Changed
+        icon: mdi:clock-outline
+        modify: |
+          const hourDiff = (Date.now() - Date.parse(x));
+          const secDiff = hourDiff / 1000;
+          const minDiff = hourDiff / 60 / 1000;
+          const hDiff = hourDiff / 3600 / 1000;
+          const hours = Math.floor(hDiff);
+          const minutes = minDiff - 60 * hours;
+          const minr = Math.floor(minutes);
+          hours + " h " + minr + " min"
+        suffix: ' ago'
+      
   - type: custom:flex-table-card
     title: Flex Table Luftdruck   
     clickable: true
@@ -97,31 +156,3 @@ cards:
           hours + " h " + minr + " min"
         suffix: ' ago'
         
-  - type: custom:flex-table-card
-    title: Flex Table Sensor.Daily   
-    clickable: true
-    entities:
-      include: sensor.daily_*    
-    columns:    
-      - data: friendly_name
-        name: Ort
-     # - data: entity_id
-       # name: Sensor    
-      - data: state
-        name: kleinster Preis
-        suffix: ' €'
-        align: center
-      - align: right
-        data: last_changed
-        name: Last Changed
-        icon: mdi:clock-outline
-        modify: |
-          const hourDiff = (Date.now() - Date.parse(x));
-          const secDiff = hourDiff / 1000;
-          const minDiff = hourDiff / 60 / 1000;
-          const hDiff = hourDiff / 3600 / 1000;
-          const hours = Math.floor(hDiff);
-          const minutes = minDiff - 60 * hours;
-          const minr = Math.floor(minutes);
-          hours + " h " + minr + " min"
-        suffix: ' ago'   
