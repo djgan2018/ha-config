@@ -10,7 +10,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Keller2 Fallback Hotspot"
-    password: "cYL1E5v8kQAV"
+    password: !secret fallback-pw
 
 captive_portal:
 
