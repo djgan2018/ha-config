@@ -3,31 +3,56 @@ title: Treibstoffpreise
 icon: mdi:gas-station
 path: fuel
 cards:
-   # Tankerkönig 
-  - type: entities
-    title: Spritpreise
-    show_header_toggle: false
-  #  icon: gas-station
+   # Tankerkönig  
+  - type: entity-filter
     entities:
+      - entity: binary_sensor.hem_velten_state
+      - entity: binary_sensor.star_velten_state
+      - entity: binary_sensor.star_vehlefanz_state
       - entity: sensor.hem_velten_diesel
       - entity: sensor.star_velten_diesel
       - entity: sensor.star_vehlefanz_diesel
       - entity: sensor.hem_velten_e10
       - entity: sensor.star_velten_e10
       - entity: sensor.star_vehlefanz_e10
- 
-  - type: entity-filter
-    entities:
-      - entity: binary_sensor.hem_velten_state
-      - entity: binary_sensor.star_velten_state
-      - entity: binary_sensor.star_vehlefanz_state
     state_filter:
       - "on"    
+      - operator: "!="
+        value: unknown
     card:
       type: entities
       show_header_toggle: false
-      title: Tankstellen offen?
-        
+      title: Spritpreise
+
+  - type: custom:flex-table-card
+    title: Flex Table Sensor.Daily   
+    clickable: true
+    entities:
+      include: sensor.daily_*    
+    columns:    
+      - data: friendly_name
+        name: Ort
+     # - data: entity_id
+       # name: Sensor    
+      - data: state
+        name: kleinster Preis
+        suffix: ' €'
+        align: center
+      - align: right
+        data: last_changed
+        name: Last Changed
+        icon: mdi:clock-outline
+        modify: |
+          const hourDiff = (Date.now() - Date.parse(x));
+          const secDiff = hourDiff / 1000;
+          const minDiff = hourDiff / 60 / 1000;
+          const hDiff = hourDiff / 3600 / 1000;
+          const hours = Math.floor(hDiff);
+          const minutes = minDiff - 60 * hours;
+          const minr = Math.floor(minutes);
+          hours + " h " + minr + " min"
+        suffix: ' ago' 
+
   #https://smart-home-assistant.de/wetterdaten-lovelace-kacheln/        
   - type: history-graph
     title: Dieselpreise
