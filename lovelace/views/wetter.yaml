@@ -12,13 +12,19 @@ cards:
     hold_action:
       action: none
 
-  - type: entities
-    title: Sonnenstand
-    show_header_toggle: false
+  - type: custom:mini-graph-card
     entities:
-      - sun.sun
-    #  - sensor.daylight
-      - sensor.solar_angle
+      - sensor.pressure_4
+    name: Aqara Pressure (1 week)
+    hour24: true
+    hours_to_show: 168
+    show:
+      labels: true
+      graph: line
+      average: true
+      extrema: true
+      color: #1e90ff
+    line_width: 3
 
     #https://www.home-assistant.io/lovelace/weather-forecast/
   - type: weather-forecast
@@ -31,7 +37,6 @@ cards:
     show_header_toggle: false
     entity: weather.openweathermap
     
-        
   #https://smart-home-assistant.de/wetterdaten-lovelace-kacheln/
   - type: history-graph
     title: OWM Wetter (5 days)

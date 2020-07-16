@@ -6,7 +6,7 @@ path: home
 icon: mdi:home-assistant
 #theme: dark-mode
 badges:
-  - sensor.time
+ # - sensor.time
  # - sun.sun
   - sensor.iphone8plus_battery_level_2
   - sensor.ipad_jurgi_battery_level
@@ -29,19 +29,13 @@ cards:
       forecast: true
       details: true
 
-    - type: custom:mini-graph-card
+    - type: entities
+      title: Abfuhrtermine
+      icon: mdi:calendar
       entities:
-        - sensor.pressure_4
-      name: Aqara Pressure (1 week)
-      hour24: true
-      hours_to_show: 168
-      show:
-        labels: true
-        graph: line
-        average: true
-        extrema: true
-        color: #1e90ff
-      line_width: 3
+        - entity: sensor.ics_1
+        - entity: sensor.ics_2
+        - entity: sensor.ics_3
 
 #########  vertical-stack beginn #########################
   - type: vertical-stack
@@ -117,6 +111,7 @@ cards:
       type: entities
       show_header_toggle: false
       title: Welche Lampen sind an?
+      icon: mdi:lightbulb
 
   - type: entity-filter
     entities:
@@ -134,4 +129,5 @@ cards:
       type: entities
       show_header_toggle: false
       title: Fenster/Türen offen?
+      icon: mdi:door-open
 ##############################

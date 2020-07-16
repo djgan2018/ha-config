@@ -238,25 +238,6 @@ cards:
       line_width: 2
       font_size: 75  
 
-    - type: custom:mini-graph-card
-      entities:
-      - entity: sensor.daily_hem_diesel_min
-        show_state: true        
-        show_indicator: true
-      - entity: sensor.daily_hem_e10_min
-        show_graph: false
-        show_state: true
-        show_indicator: true
-      name: Diesel / E10 min pro Tag
-      hour24: true
-      group_by: date
-      smoothing: false
-      show:
-        graph: line
-        smoothing: false
-        extrema: true     
-      hours_to_show: 168
-      font_size: 75
 ######## Ende vertical und 5x horizontal stack #########
 
 
