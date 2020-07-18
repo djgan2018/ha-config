@@ -1,11 +1,11 @@
 # Gitignore settings for custom_components
 # This is an example and may include too much for your use-case.
 # You can modify this file to suit your needs.
-**/custom_components/alexa_media/
-**/custom_components/daily/
-**/custom_components/hacs/
-**/custom_components/ics/
-**/custom_components/pylacrosse
-**/custom_components/python-lacrosse-master/
-**/custom_components/reolink_dev/
-**/custom_components/tankerkoenig/
+*/custom_components/alexa_media/*
+*/custom_components/daily/*
+*/custom_components/hacs/*
+*/custom_components/ics/*
+*/custom_components/pylacrosse*
+*/custom_components/python-lacrosse-master/*
+*/custom_components/reolink_dev/*
+*/custom_components/tankerkoenig/*
