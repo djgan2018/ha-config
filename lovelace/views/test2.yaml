@@ -78,7 +78,7 @@ cards:
       - entity: sensor.multisensorvorn_battery_level
         name: Vorn
       - entity: sensor.multisensorkeller_battery_level
-        name: Keller
+        name: AZ
       - entity: sensor.multisensorwz_battery_level
         name: WZ
       - entity: sensor.multisensorbad_battery_level
@@ -86,5 +86,5 @@ cards:
       - entity: sensor.multisensordg_battery_level
         name: DG
 
-      
+  
           

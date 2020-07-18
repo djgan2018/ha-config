@@ -69,6 +69,7 @@
         entity_id: sensor.date
         friendly_name: 'Pensioniert seit:'
         unit_of_measurement: "Tagen"
+ 
+    # https://github.com/fwestenberg/reolink
 
 
-     

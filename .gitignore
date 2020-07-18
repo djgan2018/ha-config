@@ -1,0 +1,18 @@
+# Gitignore settings for my config
+# This is an example and may include too much for your use-case.
+# You can modify this file to suit your needs.
+/.cloud/
+/.storage/
+/.vscode/
+/deps/
+/node-red/
+/.ios.conf
+/automations.yaml
+/secrets.yaml
+/customize.yaml
+/home-assistant.log
+/known_devices.yaml
+/themes.yaml
+/abfuhrtermine.ics
+/lovelace/views/links.yaml
+/esphome/tempaz.yaml

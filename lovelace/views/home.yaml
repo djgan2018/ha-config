@@ -37,6 +37,18 @@ cards:
         - entity: sensor.ics_2
         - entity: sensor.ics_3
 
+    - type: picture-glance
+      title: Frontdoor
+      camera_image: camera.frontdoor
+      entities:
+        - sensor.temperature_11
+        - sensor.humidity_12
+        #  - switch.camera_frontdoor_ir_lights
+      #   - switch.camera_frontdoor_email
+      #  - switch.camera_frontdoor_ftp
+        # - switch.camera_frontdoor_motion_detection
+      #   - binary_sensor.motion_frontdoor
+
 #########  vertical-stack beginn #########################
   - type: vertical-stack
     cards:
@@ -88,7 +100,6 @@ cards:
         extrema: true
         labels: true
         labels_secondary: true
-    
 
 #https://www.home-assistant.io/lovelace/alarm-panel/
  # - type: alarm-panel

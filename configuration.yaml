@@ -59,7 +59,10 @@ lovelace:
 # hacs card-mod
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
-
+# hacs reolink dev:  /config/custom_components/reolink_dev
+    - url: /hacsfiles/reolink_dev
+      type: module
+     
 
 #https://home-assistant.io/components/history/
 history:
@@ -206,4 +209,15 @@ telegram_bot:
     allowed_chat_ids:
       - !secret telegram_djgan_ID
 
+# Reolink https://github.com/fwestenberg/reolink      
+camera:
+  - platform: reolink_dev
+    host: 192.168.178.66
+    username: !secret reo-name
+    password: !secret reo-pw
+    name: frontdoor
+    stream: sub # main or sub (optional, default main)
+    protocol: rtsp # or rtsp (optional, default rtmp)
+    channel: 0 # NVR camera channel (optional, default 0)
+    scan_interval: 5 # (optional, default 30s)
 
