@@ -17,8 +17,8 @@ cards:
     columns:
       - attr: friendly_name
         name: Ort
-      - data: entity_id
-        name: Sensor
+      # - data: entity_id
+      #   name: Sensor
       - data: state
         name: Temperatur
      #   icon: mdi:thermometer
@@ -47,8 +47,8 @@ cards:
     columns:
       - attr: friendly_name
         name: Ort
-      - data: entity_id
-        name: Sensor
+      # - data: entity_id
+      #   name: Sensor
       - data: state
         name: Temperatur
      #   icon: mdi:thermometer
@@ -77,8 +77,8 @@ cards:
     columns:    
       - data: friendly_name
         name: Ort
-      - data: entity_id
-        name: Sensor    
+      # - data: entity_id
+      #   name: Sensor    
       - data: state
         name: Humidity
         suffix: ' %'
@@ -106,8 +106,8 @@ cards:
     columns:    
       - data: friendly_name
         name: Ort
-      - data: entity_id
-        name: Sensor    
+      # - data: entity_id
+      #   name: Sensor    
       - data: state
         name: Humidity
         suffix: ' %'
@@ -135,8 +135,8 @@ cards:
     columns:    
       - data: friendly_name
         name: Ort
-      - data: entity_id
-        name: Sensor    
+      # - data: entity_id
+      #   name: Sensor    
       - data: state
         name: Pressure
         suffix: ' hPa'

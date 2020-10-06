@@ -24,14 +24,6 @@ cards:
     entities:
       - script.autofullbackup
       - automation.autofullbackup
-     # - automation.mytimer
-      
-  - type: entities
-    title: Alexa nicht stören steuern
-    show_header_toggle: false
-    entities:
-        - switch.ganzer_s_echo_dot_do_not_disturb_switch
-        - switch.ganzer_s_echo_plus_do_not_disturb_switch
     
   - type: entities
     title: iPhone8Plus
@@ -76,9 +68,9 @@ cards:
     title: Glance Card Aqara Battery
     entities:
       - entity: sensor.multisensorvorn_battery_level
-        name: Vorn
-      - entity: sensor.multisensorkeller_battery_level
         name: AZ
+      - entity: sensor.multisensorkeller_battery_level
+        name: Vorn
       - entity: sensor.multisensorwz_battery_level
         name: WZ
       - entity: sensor.multisensorbad_battery_level

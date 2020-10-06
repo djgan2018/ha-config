@@ -62,7 +62,7 @@ sensor:
           # Map 0.0 (from sensor) to 0.0 (true value)
           - 0.0 -> 0.0
           - 56.5 -> 50.7
-    update_interval: 20s
+    update_interval: 30s
     
   # WiFi Signal sensor
   - platform: wifi_signal

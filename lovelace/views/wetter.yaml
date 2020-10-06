@@ -42,7 +42,7 @@ cards:
     title: OWM Wetter (5 days)
     hours_to_show: 120
     entities:
-      - sensor.owm_temperature
-      - sensor.owm_humidity
-      - sensor.owm_pressure
+      - sensor.openweathermap_temperature
+      - sensor.openweathermap_humidity
+      - sensor.openweathermap_pressure
  

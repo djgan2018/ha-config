@@ -9,9 +9,9 @@ cards:
       - entity: binary_sensor.hem_velten_state
       - entity: binary_sensor.star_velten_state
       - entity: binary_sensor.star_vehlefanz_state
-      - entity: sensor.hem_velten_diesel
-      - entity: sensor.star_velten_diesel
-      - entity: sensor.star_vehlefanz_diesel
+  #    - entity: sensor.hem_velten_diesel
+  #    - entity: sensor.star_velten_diesel
+  #    - entity: sensor.star_vehlefanz_diesel
       - entity: sensor.hem_velten_e10
       - entity: sensor.star_velten_e10
       - entity: sensor.star_vehlefanz_e10
@@ -52,22 +52,13 @@ cards:
           const minr = Math.floor(minutes);
           hours + " h " + minr + " min"
         suffix: ' ago' 
-
-  #https://smart-home-assistant.de/wetterdaten-lovelace-kacheln/        
-  - type: history-graph
-    title: Dieselpreise
-    hours_to_show: 48
-    entities:
-      - sensor.hem_velten_diesel
-     # - sensor.star_velten_diesel
-     # - sensor.star_vehlefanz_diesel
       
   - type: history-graph
     title: Benzinpreise
-    hours_to_show: 48
+    hours_to_show: 36
     entities:
       - sensor.hem_velten_e10
-    #  - sensor.star_velten_e10
+      - sensor.star_velten_e10
      # - sensor.star_vehlefanz_e10
      
 

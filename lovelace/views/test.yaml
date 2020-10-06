@@ -36,19 +36,18 @@ cards:
 
    ########### raspi line-Chart pro Tag ############
   - type: custom:mini-graph-card
-  #  name: HmIP Schaltsteckdose
     entities:
       - entity: sensor.plugable_switch_measuring_power
         name: HmIP Schaltsteckdose
         color: blue
     name: HmIP Schaltsteckdose (2 days)
-    upper_bound: 500
     hours_to_show: 48
     hour24: true
-    smoothing: false
-    #update_interval: 60
+    points_per_hour: 0.25
+  #  smoothing: false
+  #  update_interval: 60
     animate: true
-    group_by: interval
+    group_by: hour
   #  line_width: 3
     show:
       average: true
@@ -57,40 +56,26 @@ cards:
       labels: true
       graph: bar
     
-  ########### raspi line-Chart pro Stunde ############
+  ########### Trocknerpower line-Chart  ############
   - type: custom:mini-graph-card
-    title: HmIP Schaltsteckdose
     entities:
-      - entity: sensor.cpu_temperature
-        aggregate_func: max
-        name: max
+      - entity: sensor.plugable_switch_measuring_power
         hour24: true
         color: #e74c3c
-      - entity: sensor.cpu_temperature
-      #  aggregate_func: avg
-        aggregate_func: delta
-        name: delta #avg
-        hour24: true
-        color: #e7413c
-      - entity: sensor.cpu_temperature
-        aggregate_func: min
-        name: min
-        hour24: true
-        color: #dd3333
-    name: CPU (5 days)
-    hours_to_show: 120
+    name: Trockner Power 12h
+    hours_to_show: 12
     hour24: true
     line_width: 3
     show:
       labels: true
       graph: line
-    group_by: date
+      average: true
+      extrema: true
 
 ##### CPU-Sensoren min,avg,max ##########
   - type: custom:mini-graph-card
     entities:
       - entity: sensor.cpu_temperature
-        name: TX29
   #    - entity: sensor.temperature_11
  #       y_axis: secondary
     #    show_state: true
@@ -111,7 +96,7 @@ cards:
   - type: vertical-stack
     cards:
     - type: 'custom:bar-card'
-      entity: sensor.temperature_11
+      entity: sensor.temperature_8
       name: Temp vorn
       icon: mdi:thermometer
       target: 25
@@ -172,31 +157,14 @@ cards:
         - color: Red
           from: 25.5
           to: 45
-          
-  - type: 'custom:bar-card'
-    entities: 
-      - entity: sensor.multisensorvorn_battery_level
-        name: Battery Aqara vorn
-    icon: mdi:battery-50
-    target: 10
-    positions:
-      minmax: inside
-    severity:
-      - color: Red
-        from: 0
-        to: 15
-      - color: yellow
-        from: 16
-        to: 75
-      - color: green
-        from: 76
-        to: 100 
         
   - type: 'custom:bar-card'
     entities: 
       - entity: sensor.plugable_switch_measuring_power
         name: Trockner
     icon: mdi:power-plug
+    min: 0
+    max: 600
     positions:
       minmax: inside
     severity:

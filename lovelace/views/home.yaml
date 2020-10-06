@@ -9,13 +9,12 @@ badges:
  # - sensor.time
  # - sun.sun
   - sensor.iphone8plus_battery_level_2
-  - sensor.ipad_jurgi_battery_level
-  - sensor.hem_velten_diesel
+  - sensor.ipad_jurgi_2_battery_level
   - sensor.hem_velten_e10
  # - sensor.hem_velten_e5
   - sensor.cpu_temperature
   - sensor.iphone8plus_steps
-  #- binary_sensor.water_sensor
+  - binary_sensor.water_sensor
 
 cards:
   - type: vertical-stack
@@ -36,13 +35,14 @@ cards:
         - entity: sensor.ics_1
         - entity: sensor.ics_2
         - entity: sensor.ics_3
-
+        - entity: sensor.ics_4
+        
     - type: picture-glance
       title: Frontdoor
       camera_image: camera.frontdoor
       entities:
-        - sensor.temperature_11
-        - sensor.humidity_12
+        - sensor.temperature_8
+        - sensor.humidity_9
         #  - switch.camera_frontdoor_ir_lights
       #   - switch.camera_frontdoor_email
       #  - switch.camera_frontdoor_ftp
@@ -58,7 +58,7 @@ cards:
         - entity: sensor.tx29_temperature
           name: TX29
           color: orange
-        - entity: sensor.temperature_11
+        - entity: sensor.temperature_8
           name: Out Front
           color: blue
           y_axis: secondary
@@ -81,14 +81,10 @@ cards:
       entities:
       - entity: sensor.tx29_humidity
         name: TX29
-      - entity: sensor.humidity_12
+      - entity: sensor.humidity_9
         name: Out Front
         y_axis: secondary
         show_state: true
-   #  - entity: sensor.pressure_13
-   #     show_graph: false
-   #     show_state: true
-   #     show_indicator: true
       hour24: true
       hours_to_show: 168
       name: Outside (1 week)
@@ -96,6 +92,28 @@ cards:
       show:
         graph: line
         line_width: 3
+        average: true
+        extrema: true
+        labels: true
+        labels_secondary: true
+
+    - type: custom:mini-graph-card
+      entities:
+      - entity: sensor.bme280_temperature
+        name: BME280
+        show_state: true
+      - entity: sensor.average_bikeport_temperature
+        name: BME280 average 1h
+        show_graph: true
+        show_state: true
+        show_indicator: true
+      hour24: true
+      hours_to_show: 96
+      name: BME280 (96h)
+      group_by: interval
+      show:
+        graph: line
+        line_width: 1
         average: true
         extrema: true
         labels: true

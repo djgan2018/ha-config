@@ -1,0 +1,95 @@
+esphome:
+  name: bikeport
+  platform: ESP8266
+  board: nodemcuv2
+ # board: esp01_1m
+
+wifi:
+  ssid: !secret wifi-ssid
+  password: !secret wifi-password
+#  manual_ip:
+    # Set this to the IP of the ESP
+  #  static_ip: 192.168.178.162
+    # Set this to the IP address of the router. Often ends with .1
+ #   gateway: 192.168.178.1
+    # The subnet of the network. 255.255.255.0 works for most home networks.
+ #   subnet: 255.255.255.0
+  
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bikeport Fallback Hotspot"
+    password: !secret fallback-pw
+
+captive_portal:
+
+# Enable logging
+logger:
+
+web_server:
+  port: 80
+
+# Enable Home Assistant API
+api:
+  password: !secret api-password
+  
+ota:
+  password: !secret ota-password
+
+# Sync time with Home Assistant
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+      
+# text sensor with general information
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: esphome_bikeport_ip
+    ssid:
+      name: esphome_bikeport_ssid
+    bssid:
+      name: esphome_bikeport_bssid
+  - platform: version
+    name: "ESPHome Version Bikeport"
+      
+i2c:
+  sda: 4
+  scl: 5
+  scan: True
+  id: bus_a
+
+# BME280 Sensor  
+sensor:
+  - platform: bme280
+    i2c_id: bus_a
+    address: 0x76
+    temperature:
+      name: "BME280 Temperature"
+      filters:
+        - calibrate_linear:
+          # Map 0.0 (from6sensor) to 0.0 (true value)
+          - 0.0 -> 0.0
+          - 25.0 -> 24.9
+      oversampling: 16x
+    pressure:
+      name: "BME280 Pressure"
+    humidity:
+      name: "BME280 Humidity"
+      filters:
+        - calibrate_linear:
+          # Map 0.0 (from sensor) to 0.0 (true value)
+          - 0.0 -> 0.0
+          - 97.0 -> 79.0
+      oversampling: 16x
+    update_interval: 30s
+
+# WiFi Signal sensor
+  - platform: wifi_signal
+    name: esphome_bikeport_wifi_signal
+    update_interval: 60s
+
+switch:
+# Switch to restart the plug
+  - platform: restart
+    name: esphome_bikeport_restart

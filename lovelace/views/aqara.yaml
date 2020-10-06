@@ -12,7 +12,7 @@ cards:
       cards:
       - type: custom:mini-graph-card
         entities:
-          - sensor.temperature_11
+          - sensor.temperature_8
         name: Out Front (5 days)
         hour24: true
         hours_to_show: 120
@@ -21,7 +21,7 @@ cards:
         font_size: 75
       - type: custom:mini-graph-card
         entities:
-          - sensor.humidity_12
+          - sensor.humidity_9
         name: Out Front (5 days)
         hour24: true
         hours_to_show: 120
@@ -74,27 +74,27 @@ cards:
           line_width: 4
           font_size: 75
 
-######## Mini-Cards-horizontal AZ ##############        
-    - type: horizontal-stack
-      cards:
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.temperature_8
-        name: AZ (5 days)
-        hour24: true
-        hours_to_show: 120
-        line_color: '#e74c3c'
-        line_width: 4
-        font_size: 75
-      - type: custom:mini-graph-card
-        entities:
-          - sensor.humidity_9
-        name: AZ (5 days)
-        hour24: true
-        hours_to_show: 120
-        line_color: green
-        line_width: 4
-        font_size: 75
+# ######## Mini-Cards-horizontal AZ ##############        
+#     - type: horizontal-stack
+#       cards:
+#       - type: custom:mini-graph-card
+#         entities:
+#           - sensor.temperature_11
+#         name: AZ (5 days)
+#         hour24: true
+#         hours_to_show: 120
+#         line_color: '#e74c3c'
+#         line_width: 4
+#         font_size: 75
+#       - type: custom:mini-graph-card
+#         entities:
+#           - sensor.humidity_12
+#         name: AZ (5 days)
+#         hour24: true
+#         hours_to_show: 120
+#         line_color: green
+#         line_width: 4
+#         font_size: 75
         
 
         
@@ -181,6 +181,28 @@ cards:
           entities:
             - sensor.keller2_humidity
           name: Keller2 esphome (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: green
+          line_width: 4
+          font_size: 75 
+
+    - type: horizontal-stack
+      cards:
+######## Mini-Cards-horizontal esphome Bikeport ###############
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.bme280_temperature
+          name: Bikeport esphome (5 days)
+          hour24: true
+          hours_to_show: 120
+          line_color: '#e74c3c'
+          line_width: 4
+          font_size: 75
+        - type: custom:mini-graph-card
+          entities:
+            - sensor.bme280_humidity
+          name: Bikeport esphome (5 days)
           hour24: true
           hours_to_show: 120
           line_color: green
