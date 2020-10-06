@@ -3,7 +3,7 @@
 
 Please note:
 
-The configuration shown here is not complete and is also constantly being changed and added to. 
+The configuration shown here is not complete and is also constantly being changed and added. 
 
 
 

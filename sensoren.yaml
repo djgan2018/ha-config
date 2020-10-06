@@ -72,4 +72,13 @@
  
     # https://github.com/fwestenberg/reolink
 
+# https://github.com/Limych/ha-average
+
+  - platform: average
+    name: 'Average Bikeport Temperature'
+    duration:
+      days: 1
+    precision: 1
+    entities:
+      - sensor.bme280_temperature
 

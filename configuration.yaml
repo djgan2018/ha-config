@@ -36,15 +36,16 @@ scene: !include scenes.yaml
 lovelace:
   mode: yaml
   resources:
-    - url: /local/mini-media-player-bundle.js?v=1.4.2
-      type: module
     - url: /local/weather-card/weather-card.js
       type: module
 ################ with HACS ###################################
-# https://github.com/kalkih/mini-graph-card
+# hacs https://github.com/kalkih/mini-graph-card
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
-# https://github.com/custom-cards/bar-card
+ # hacs https://github.com/kalkih/mini-media-player     
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module  
+# hacs https://github.com/custom-cards/bar-card
     - url: /hacsfiles/bar-card/bar-card.js
       type: module
 # hacs battery-state-card
@@ -60,8 +61,11 @@ lovelace:
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
 # hacs reolink dev:  /config/custom_components/reolink_dev
-    - url: /hacsfiles/reolink_dev
+    - url: /hacsfiles/custom_components/reolink_dev
       type: module
+# https://github.com/Limych/ha-average  average-sensor
+    - url: /config/custom_components/average
+      type: module  
      
 
 #https://home-assistant.io/components/history/
@@ -166,13 +170,15 @@ homekit:
 
       
 # https://github.com/custom-components/alexa_media_player/wiki/Notification-Component
+# https://www.home-assistant.io/integrations/telegram/
 notify:
-  - platform: alexa_media
-    name: alexa_media
-# für Telegram
   - name: HA_Message
     platform: telegram
     chat_id: !secret telegram_djgan_ID
+   
+    
+# - platform: alexa_media
+#  name: alexa_media
 
 # hier standen mal alle Sensoren
 # siehe auch sensoren.yaml
@@ -183,7 +189,7 @@ notify:
 tankerkoenig:
   api_key: !secret tanker-key
   monitored_conditions:
-    - "diesel"
+  #  - "diesel"
     - "e10"
     - "state"
   stations:
@@ -220,4 +226,11 @@ camera:
     protocol: rtsp # or rtsp (optional, default rtmp)
     channel: 0 # NVR camera channel (optional, default 0)
     scan_interval: 5 # (optional, default 30s)
+  
+# https://github.com/custom-components/alexa_media_player/wiki/Configuration
+#alexa_media:
+  #accounts:
+   # email: !secret amazon-name
+   # password: !secret amazon-pw
+   # url: amazon.de
 
