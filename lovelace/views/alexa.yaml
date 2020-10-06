@@ -1,17 +1,26 @@
 id: alexa
 title: alexa
-icon: mdi:music
+icon: mdi:amazon
 path: alexa
 cards:
-  - type: custom:mini-media-player
+ # - type: custom:mini-media-player
+ #   entity: media_player.ganzer_s_echo_dot
+  #  icon: mdi:music
+   # artwork: full-cover-fit
+ #   source: true
+    #sound_mode: full
+  #  scroll_info: true
+   # power_state: true
+    #volume: true
+   # volume_stateless: true
+
+  - type: 'custom:mini-media-player'
     entity: media_player.ganzer_s_echo_dot
-    icon: mdi:spotify
+    icon: 'mdi:amazon'
     artwork: full-cover-fit
-    source: true
-    sound_mode: full
-    scroll_info: true
-    power_state: true
-    volume: true
+    tts:
+      platform: alexa
+      entity_id: media_player.ganzer_s_echo_dot    
     
   - type: media-control
     entity: media_player.ganzer_s_echo_dot
@@ -21,24 +30,12 @@ cards:
     
   - type: custom:mini-media-player
     entity: media_player.ganzer_s_echo_plus
-    icon: mdi:spotify
+    icon: mdi:music
     artwork: full-cover
     source: true
     source_mode: full
     power_state: true
     volume: true
-  #  group: true
-
-  - type: media-control
-    entity: media_player.ganzer_s_fire_tv
-
-  - type: 'custom:mini-media-player'
-    artwork: full-cover
-    entity: media_player.ganzer_s_echo_dot
-    icon: 'mdi:amazon'
-    tts:
-      platform: alexa
-      entity_id: media_player.ganzer_s_echo_dot
       
   - type: 'custom:mini-media-player'
     artwork: full-cover
@@ -47,3 +44,6 @@ cards:
     tts: 
       platform: alexa
       entity_id: media_player.ganzer_s_echo_plus
+
+  - type: media-control
+    entity: media_player.ganzer_s_fire_tv
