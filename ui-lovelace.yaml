@@ -16,9 +16,9 @@ views:
   - !include lovelace/views/table.yaml
   - !include lovelace/views/battery.yaml
   - !include lovelace/views/solar.yaml
+  - !include lovelace/views/aqara.yaml
   - !include lovelace/views/test.yaml
   - !include lovelace/views/test2.yaml
-  - !include lovelace/views/aqara.yaml
   - !include lovelace/views/alexa.yaml
   - !include lovelace/views/alexa2.yaml
   - !include lovelace/views/links.yaml
