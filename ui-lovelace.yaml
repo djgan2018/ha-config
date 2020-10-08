@@ -20,7 +20,6 @@ views:
   - !include lovelace/views/test.yaml
   - !include lovelace/views/test2.yaml
   - !include lovelace/views/alexa.yaml
-  - !include lovelace/views/alexa2.yaml
   - !include lovelace/views/links.yaml
   - !include lovelace/views/hmip.yaml
   - !include lovelace/views/synology.yaml
